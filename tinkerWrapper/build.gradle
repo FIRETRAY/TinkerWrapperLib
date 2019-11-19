@@ -1,0 +1,46 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion "27.0.3"
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFile 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+        }
+    }
+
+    defaultPublishConfig "tinkerEnabledRelease"
+    flavorDimensions "tinkerWrapper"
+    productFlavors {
+        tinkerEnabled {
+            dimension "tinkerWrapper"
+        }
+
+        tinkerDisabled {
+            dimension "tinkerWrapper"
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // tinker lib
+    tinkerEnabledImplementation "com.tencent.tinker:tinker-android-lib:1.9.14"
+    tinkerEnabledImplementation "com.squareup.okhttp3:okhttp:3.11.0"
+}
+repositories {
+    mavenCentral()
+}
