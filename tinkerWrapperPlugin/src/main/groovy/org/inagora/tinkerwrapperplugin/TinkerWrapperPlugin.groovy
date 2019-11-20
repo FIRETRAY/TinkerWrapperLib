@@ -9,6 +9,7 @@ class TinkerWrapperPlugin implements Plugin<Project> {
     @Override
     void apply(Project project) {
         android = project.extensions.android
+        project.extensions.tinkerPatch.dex.loader.add('org.inagora.tinkerwrapper.implementation.RealApplicationImpl')
         project.apply plugin: 'com.tencent.tinker.patch'
         project.afterEvaluate {
             updateManifest(it)
