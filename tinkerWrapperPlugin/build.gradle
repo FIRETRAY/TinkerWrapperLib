@@ -4,6 +4,7 @@ dependencies {
     implementation gradleApi()
     implementation localGroovy()
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "com.tencent.tinker:tinker-patch-gradle-plugin:1.9.14"
 }
 
 sourceSets {
