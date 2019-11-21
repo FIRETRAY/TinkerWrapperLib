@@ -7,7 +7,7 @@ import org.inagora.tinkerwrapper.implementation.TinkerMgrImpl;
  * 与外界通信的TinkerSubmodule唯一接口
  */
 public class TinkerMgrProxy implements ITinkerMgr {
-    public static ITinkerMgr INSTANCE = new TinkerMgrImpl();
+    public static ITinkerMgr INSTANCE = new TinkerMgrProxy();
 
     @Override
     public void startCheckAsync() {

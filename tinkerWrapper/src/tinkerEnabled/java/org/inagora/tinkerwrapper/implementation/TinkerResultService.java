@@ -7,6 +7,7 @@ import com.tencent.tinker.lib.service.PatchResult;
 import com.tencent.tinker.lib.util.TinkerLog;
 import com.tencent.tinker.lib.util.TinkerServiceInternals;
 
+import org.inagora.tinkerwrapper.api.OnPatchInstalledListener;
 import org.inagora.tinkerwrapper.implementation.utils.TinkerUtils;
 
 import java.io.File;
@@ -35,8 +36,10 @@ public class TinkerResultService extends DefaultTinkerResultService {
             if (TinkerUtils.removePatchCorrectMD5()) {
                 final boolean isForced = TinkerMgrImpl.getInstance().isForced();
                 if (checkIfNeedKill(result)) {
-                    TinkerMgrImpl.getInstance().getOnPatchInstalledListener()
-                            .onPatchInstalledSuccess(isForced);
+                    OnPatchInstalledListener listener = TinkerMgrImpl.getInstance().getOnPatchInstalledListener();
+                    if (listener != null) {
+                        listener.onPatchInstalledSuccess(isForced);
+                    }
                 } else {
                     TinkerLog.i(TAG, "I have already install the newly patch version!");
                 }
