@@ -1,10 +1,11 @@
 # Welcome to TinkerWrapper
-[![Release Version](https://img.shields.io/badge/release-1.9.14-red.svg)](https://github.com/FIRETRAY/TinkerWrapperLib/releases)
+[![Release Version](https://img.shields.io/badge/release-1.0-beta-success.svg)](https://github.com/FIRETRAY/TinkerWrapperLib/releases)
+[![TinkerRelease Version](https://img.shields.io/badge/release-1.9.14-informational.svg)](https://github.com/Tencent/tinker/releases)
 
 ## 概述
 TinkerWrapper是基于Tencent Tinker热修复解决方案的包装工具，便于开发更快速地接入Tinker避，让开发者无需改造自己的Application即可接入Tinker。此外对补丁的下载、安装流程进行了封装，减少了开发者接入Tinker的成本
 
-## 使用方法
+## 接入指南
 在project的build.gradle中加入如下代码，引用TinkerWrapper的Gradle插件
 ```
 buildscript {
@@ -29,7 +30,7 @@ dependencies {
 }
 ```
 
-在app module中加入Tinker的配置Extension
+在app module中加入Tinker的配置Extension，具体说明请参考[Tinker的Wiki](https://github.com/Tencent/tinker/wiki)
 ```
     tinkerPatch {
         /**
@@ -199,23 +200,57 @@ dependencies {
     }
 
 ```
+## API说明
+开发者只要关注TinkerMgrProxy(implements ITinkerMgr)里的4个方法 
+```
+public interface ITinkerMgr {
+    /**
+     * 异步检查是否需要下载安装补丁，具体启动时机由外界业务层决定
+     * attention: 需要先设定PatchInfo，然后调用该方法
+     */
+    void startCheckAsync();
 
-开发需要对利用TinkerMgrProxy向TinkerWrapper注入以下信息：
+    /**
+     * 返回安装的补丁版本
+     *
+     * @return 返回补丁版本。若没有安装过补丁则返回空
+     */
+    String getInstalledPatchVersion();
+
+    /**
+     * PatchInfo设定
+     */
+    void setPatchInfo(PatchInfo patchInfo);
+
+    /**
+     * 设置补丁安装成功回调
+     */
+    void setOnPatchInstalledListener(OnPatchInstalledListener onPatchInstalledListener);
+}
+```
+TinkerMgrProxy访问方法
+```
+TinkerMgrProxy.INSTANCE.<method name>
+```
+
+开发者需要对利用TinkerMgrProxy向TinkerWrapper注入以下信息：
 1. setOnPatchInstalledListener，也就是补丁安装成功后的动作（可选）
 2. 向TinkerWrapper提供最新版补丁的信息setPatchInfo，开发需要自行实现补丁与补丁元信息的服务端存储和获取
+
 然后调用TinkerMgrProxy.startCheckAsync即可安装补丁
 
 ## 常见gradle命令
 
 合成基准apk
 ```
-./gradlew -Pbase_apk_version=1 clean app:assemble{$flavor}${buildType}
+./gradlew -Pbase_apk_version=xxx clean app:assemble{$flavor}${buildType}
 ```
 
 合成补丁
 ```
-./gradlew -Ppatch_version=1 app:tinkerPatch{$flavor}${buildType}
+./gradlew -Ppatch_version=xxxx app:tinkerPatch{$flavor}${buildType}
 ```
 
 ## 注意：
 1. 基准包ID可以为打包分支的HEAD commitID，推荐
+2. TinkerWrapper适用于对Tinker定制化要求不高，且希望快速接入的项目
