@@ -221,7 +221,13 @@ TinkerMgrProxy.INSTANCE.<method name>
 1. setOnPatchInstalledListener，也就是补丁安装成功后的动作（可选）
 2. 向TinkerWrapper提供最新版补丁的信息setPatchInfo，开发需要自行实现补丁与补丁元信息的服务端存储和获取
 
-然后调用TinkerMgrProxy.startCheckAsync即可安装补丁
+然后调用TinkerMgrProxy.startCheckAsync即可安装补丁。注入信息以及启动的实际可以在Application.onCreate中，或者其他时机。这个具体的时机可以由开发者自己把握
+
+PatchInfo的说明
+* is_forced 是否是强制补丁，即安装完成后是否要强制重启
+* patch_version 补丁版本号
+* patch_url 补丁下载地址
+* patch_md5 补丁MD5
 
 ## 常见gradle命令
 
