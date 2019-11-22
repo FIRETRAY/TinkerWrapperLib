@@ -1,6 +1,6 @@
 # Welcome to TinkerWrapper
-[![Release Version](https://img.shields.io/badge/release-1.0-beta-success.svg)](https://github.com/FIRETRAY/TinkerWrapperLib/releases)
-[![TinkerRelease Version](https://img.shields.io/badge/release-1.9.14-informational.svg)](https://github.com/Tencent/tinker/releases)
+[![Release Version](https://img.shields.io/badge/release-1.0beta-success.svg)](https://github.com/FIRETRAY/TinkerWrapperLib/releases)
+[![TinkerRelease Version](https://img.shields.io/badge/tinker-1.9.14-informational.svg)](https://github.com/Tencent/tinker/releases)
 
 ## 概述
 TinkerWrapper是基于Tencent Tinker热修复解决方案的包装工具，便于开发更快速地接入Tinker避，让开发者无需改造自己的Application即可接入Tinker。此外对补丁的下载、安装流程进行了封装，减少了开发者接入Tinker的成本
