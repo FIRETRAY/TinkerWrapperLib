@@ -185,7 +185,7 @@ tinkerPatch {
 
 ```
 ## API说明
-开发者只要关注TinkerMgrProxy(implements ITinkerMgr)里的4个方法 
+开发者只要关注TinkerMgrProxy(implements ITinkerMgr)里的5个方法 
 ```
 public interface ITinkerMgr {
     /**
@@ -210,6 +210,11 @@ public interface ITinkerMgr {
      * 设置补丁安装成功回调
      */
     void setOnPatchInstalledListener(OnPatchInstalledListener onPatchInstalledListener);
+    
+    /**
+     * 返回实际运行时的真正的Application
+     */
+    Application getRuntimeApplication();
 }
 ```
 TinkerMgrProxy访问方法
@@ -228,6 +233,9 @@ PatchInfo的说明
 * patch_version 补丁版本号
 * patch_url 补丁下载地址
 * patch_md5 补丁MD5
+
+### 注意
+对于使用Application自有方法（如```registerActivityLifecycleCallbacks```）的情况，需要开发者调用```TinkerMgrProxy.getRuntimeApplication()```方法获取运行时的Application类，并调用此类进行操作。不要再对原Application进行这样的方法调用，否则调用会失效！具体原因见TinkerWrapperLib原理分析。
 
 ## 常见gradle命令
 
