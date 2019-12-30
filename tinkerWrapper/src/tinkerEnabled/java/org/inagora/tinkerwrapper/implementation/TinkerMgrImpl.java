@@ -1,5 +1,6 @@
 package org.inagora.tinkerwrapper.implementation;
 
+import android.app.Application;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
@@ -32,6 +33,7 @@ public class TinkerMgrImpl implements ITinkerMgr {
     private Context applicationContext;
     private PatchInfo patchInfo;
     private OnPatchInstalledListener onPatchInstalledListener;
+    private Application runtimeApplication;
 
     public TinkerMgrImpl() {
     }
@@ -41,6 +43,11 @@ public class TinkerMgrImpl implements ITinkerMgr {
             sInstance = new TinkerMgrImpl();
         }
         return sInstance;
+    }
+
+    @Override
+    public Application getRuntimeApplication() {
+        return runtimeApplication;
     }
 
     public void initVarByContext(Context applicationContext) {

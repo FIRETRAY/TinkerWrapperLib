@@ -1,5 +1,7 @@
 package org.inagora.tinkerwrapper.api;
 
+import android.app.Application;
+
 import org.inagora.tinkerwrapper.implementation.TinkerMgrImpl;
 
 
@@ -29,5 +31,10 @@ public class TinkerMgrProxy implements ITinkerMgr {
     @Override
     public void setOnPatchInstalledListener(OnPatchInstalledListener onPatchInstalledListener) {
         TinkerMgrImpl.getInstance().setOnPatchInstalledListener(onPatchInstalledListener);
+    }
+
+    @Override
+    public Application getRuntimeApplication() {
+        return TinkerMgrImpl.getInstance().getRuntimeApplication();
     }
 }

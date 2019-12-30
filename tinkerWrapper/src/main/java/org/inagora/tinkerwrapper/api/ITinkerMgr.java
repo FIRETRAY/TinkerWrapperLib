@@ -1,5 +1,7 @@
 package org.inagora.tinkerwrapper.api;
 
+import android.app.Application;
+
 public interface ITinkerMgr {
     /**
      * 异步检查是否需要下载安装补丁，具体启动时机由外界业务层决定
@@ -23,4 +25,9 @@ public interface ITinkerMgr {
      * 设置补丁安装成功回调
      */
     void setOnPatchInstalledListener(OnPatchInstalledListener onPatchInstalledListener);
+
+    /**
+     * 返回实际运行时的真正的Application
+     */
+    Application getRuntimeApplication();
 }
