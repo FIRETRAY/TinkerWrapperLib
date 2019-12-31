@@ -20,8 +20,6 @@ android {
             minifyEnabled false
         }
     }
-
-    defaultPublishConfig "tinkerEnabledRelease"
 }
 
 dependencies {
