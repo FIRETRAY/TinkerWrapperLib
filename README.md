@@ -1,5 +1,5 @@
 # Welcome to TinkerWrapper
-[![Release Version](https://img.shields.io/badge/release-1.0beta-success.svg)](https://github.com/FIRETRAY/TinkerWrapperLib/releases)
+[![Release Version](https://img.shields.io/badge/release-1.0-success.svg)](https://github.com/FIRETRAY/TinkerWrapperLib/releases)
 [![TinkerRelease Version](https://img.shields.io/badge/tinker-1.9.14.5-informational.svg)](https://github.com/Tencent/tinker/releases)
 
 ## 概述
