@@ -12,11 +12,11 @@ buildscript {
     ......
     repositories {
         ......
-        maven { url 'https://dl.bintray.com/rafeliu/test' }
+        maven { url 'https://dl.bintray.com/rafeliu/tinkerWrapperLib' }
     }
     dependencies {
         ......
-        classpath 'org.inagora.tinkerwrapperplugin:tinkerwrapperplugin:1.2-beta'
+        classpath 'org.inagora.tinkerwrapperplugin:tinkerwrapperplugin:1.0'
     }
 }
 ```
@@ -26,7 +26,7 @@ buildscript {
 apply plugin: 'org.inagora.tinkerwrapperplugin'
 .....
 dependencies { 
-    implementation 'org.inagora.tinkerwrapper:tinkerwrapper:1.4-beta'
+    implementation 'org.inagora.tinkerwrapper:tinkerwrapper:1.0'
 }
 ```
 
