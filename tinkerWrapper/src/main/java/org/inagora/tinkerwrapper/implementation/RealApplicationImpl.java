@@ -13,7 +13,7 @@ public class RealApplicationImpl extends TinkerApplication {
         // 7 == ShareConstants.TINKER_ENABLE_ALL
         // loadVerifyFlag = false
         super(ShareConstants.TINKER_ENABLE_ALL,
-                "org.inagora.tinkerwrapper.api.implementation.DelegateApplicationLike",
+                "org.inagora.tinkerwrapper.implementation.DelegateApplicationLike",
                 "com.tencent.tinker.loader.TinkerLoader",
                 false);
     }
