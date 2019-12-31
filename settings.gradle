@@ -1,0 +1,2 @@
+include ':tinkerWrapper', ':tinkerWrapperPlugin'
+rootProject.name='TinkerWrapperLib'
