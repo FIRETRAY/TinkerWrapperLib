@@ -64,6 +64,7 @@ public class TinkerMgrImpl implements ITinkerMgr {
         Tinker tinker = new Tinker.Builder(outer.getApplication()).build();
         Tinker.create(tinker);
         tinker.install(outer.getTinkerResultIntent(), TinkerResultService.class, new UpgradePatch());
+        runtimeApplication = outer.getApplication();
     }
 
     public void installPatch() {
