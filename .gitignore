@@ -53,3 +53,11 @@ proguard/
 /*/.idea
 
 /buildSdk
+
+# local scripts
+tinkerWrapper/bintrayv1.gradle
+tinkerWrapper/installv1.gradle
+tinkerWrapper/publish.gradle
+tinkerWrapperPlugin/bintrayv1.gradle
+tinkerWrapperPlugin/installv1.gradle
+tinkerWrapperPlugin/publish.gradle
